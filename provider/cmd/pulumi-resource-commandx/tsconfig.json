@@ -1,0 +1,39 @@
+{
+  "compilerOptions": {
+    "strict": true,
+    "outDir": "bin",
+    "target": "es2016",
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "sourceMap": true,
+    "experimentalDecorators": true,
+    "pretty": true,
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitReturns": true,
+    "forceConsistentCasingInFileNames": true
+  },
+  "files": [
+    "functions.ts",
+    "index.ts",
+    "provider.ts",
+    "resources.ts",
+    "schema-types.ts",
+    "tools/chmod.ts",
+    "tools/commandBuilder.ts",
+    "tools/etcdctl.ts",
+    "tools/hostnamectl.ts",
+    "tools/index.ts",
+    "tools/mkdir.ts",
+    "tools/mktemp.ts",
+    "tools/mv.ts",
+    "tools/rm.ts",
+    "tools/sed.ts",
+    "tools/systemctl.ts",
+    "tools/tar.ts",
+    "tools/tee.ts",
+    "tools/tool.ts",
+    "tools/wget.ts",
+    "types.ts",
+    "util.ts"
+  ]
+}

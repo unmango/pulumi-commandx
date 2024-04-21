@@ -1,0 +1,207 @@
+name: build-test
+
+on:
+  workflow_call:
+    inputs:
+      ref:
+        required: true
+        type: string
+      version:
+        type: string
+        description: Version to be used to build the binaries, schema and SDKs
+        required: true
+      short_test:
+        type: boolean
+        description: Skip longer running tests
+        default: false
+      retention_days:
+        type: number
+        description: The number of days for which we retain assets
+        default: 30
+
+env:
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  PROVIDER: commandx
+  PROVIDER_VERSION: ${{ inputs.version }}
+  PULUMI_ACCESS_TOKEN: ${{ secrets.PULUMI_ACCESS_TOKEN }}
+  PULUMI_LOCAL_NUGET: ${{ github.workspace }}/nuget
+  PULUMI_GO_DEP_ROOT: ${{ github.workspace }}/..
+
+jobs:
+  prerequisites:
+    runs-on: ubuntu-latest
+    name: Build binaries and schema
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.ref }}
+
+      - name: Install Languages & Frameworks
+        uses: ./.github/actions/install
+        with:
+          skip_dotnet_and_java: "true"
+
+      - name: Build binaries
+        run: make provider
+
+      - name: Artifact capture
+        uses: ./.github/actions/prerequisites-artifact-capture
+
+      - name: Check worktree clean
+        uses: ./.github/actions/check-worktree-clean
+
+  build_sdks:
+    needs: prerequisites
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: true
+      matrix:
+        language:
+          - nodejs
+          - python
+          - dotnet
+          - go
+          - java
+    name: Build SDKs
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.ref }}
+
+      - name: Install Languages & Frameworks
+        uses: ./.github/actions/install
+
+      - run: make ensure
+
+      - name: Prerequisites artifact restore
+        uses: ./.github/actions/prerequisites-artifact-restore
+
+      - name: Mark prerequisites as up-to-date
+        run: make --touch provider
+
+      - name: Generate SDK
+        run: make generate_${{ matrix.language }}
+
+      - name: Build SDK
+        run: make build_${{ matrix.language }}
+
+      - name: Check worktree clean
+        uses: ./.github/actions/check-worktree-clean
+
+      - name: Tar SDK folder
+        run: tar -zcf sdk/${{ matrix.language }}.tar.gz -C sdk/${{ matrix.language }} .
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.language  }}-sdk.tar.gz
+          path: ${{ github.workspace}}/sdk/${{ matrix.language }}.tar.gz
+          retention-days: ${{ inputs.retention_days }}
+
+  test_sdks:
+    needs: build_sdks
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: true
+      matrix:
+        language:
+          - nodejs
+          - python
+          - dotnet
+          - go
+          - java
+    name: Test SDKs
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.ref }}
+
+      - name: Setup
+        uses: ./.github/actions/test-setup
+        with:
+          language: ${{ matrix.language }}
+
+      - name: Build test image
+        uses: ./.github/actions/build-test-image
+
+      - name: Run tests
+        if: ${{ ! inputs.short_test }}
+        run: |
+          set -euo pipefail
+          cd examples && go test -v -json -cover -timeout 2h -tags=${{ matrix.language }} -parallel 16 . 2>&1 | tee /tmp/gotest.log | gotestfmt
+
+      - name: Run short tests
+        if: inputs.short_test
+        run: |
+          set -euo pipefail
+          cd examples && go test -v -json -cover -timeout 15m -short -tags=${{ matrix.language }} -parallel 16 . 2>&1 | tee /tmp/gotest.log | gotestfmt
+
+  test_provider:
+    runs-on: ubuntu-latest
+    name: Test Provider
+    needs: prerequisites
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.ref }}
+
+      - name: Install Languages & Frameworks
+        uses: ./.github/actions/install
+        with:
+          skip_dotnet_and_java: "true"
+
+      - name: Install gotestfmt
+        uses: jaxxstorm/action-install-gh-release@v1.11.0
+        with:
+          tag: v2.5.0
+          repo: GoTestTools/gotestfmt
+
+      - run: make ensure
+
+      - name: Prerequisites artifact restore
+        uses: ./.github/actions/prerequisites-artifact-restore
+
+      # Enable when we actually have some tests
+      # - name: Test Provider Library
+      #   run: |
+      #     set -euo pipefail
+      #     cd provider && go test -v -json -coverprofile="coverage.txt" -coverpkg=./... -timeout 1h -parallel 16 ./... 2>&1 | tee /tmp/gotest.log | gotestfmt
+
+      # - name: Upload coverage reports to Codecov
+      #   uses: codecov/codecov-action@v4
+      #   env:
+      #     CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+
+  dist:
+    runs-on: ubuntu-latest
+    name: Provider Dist
+    needs: prerequisites
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.ref }}
+
+      - name: Install Languages & Frameworks
+        uses: ./.github/actions/install
+        with:
+          skip_dotnet_and_java: "true"
+
+      - run: make ensure
+
+      - name: Prerequisites artifact restore
+        uses: ./.github/actions/prerequisites-artifact-restore
+
+      - name: Build dist packages
+        run: make dist --jobs=2
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: dist
+          path: dist
+          retention-days: ${{ inputs.retention_days }}
