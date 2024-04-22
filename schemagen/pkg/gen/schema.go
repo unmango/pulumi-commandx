@@ -41,10 +41,10 @@ func GenerateSchema(packageDir string) schema.PackageSpec {
 			"go": rawMessage(map[string]interface{}{
 				"generateResourceContainerTypes": true,
 				"liftSingleValueMethodReturns":   true,
-				"importBasePath":                 "github.com/unstoppablemango/pulumi-commandx/sdk/go/commandx",
-				"packageImportAliases": map[string]string{
-					"github.com/pulumi/pulumi-command/sdk/go/command/remote": "pulumiCommand",
-				},
+				"importBasePath":                 "github.com/UnstoppableMango/pulumi-commandx/sdk/go/commandx",
+				// "packageImportAliases": map[string]string{
+				// 	"github.com/pulumi/pulumi-command/sdk/go/command/remote": "pulumiCommand",
+				// },
 			}),
 			"nodejs": rawMessage(map[string]interface{}{
 				"packageName":                  "@unmango/pulumi-commandx",

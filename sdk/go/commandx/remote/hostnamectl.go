@@ -8,9 +8,9 @@ import (
 	"reflect"
 
 	"errors"
-	pulumiCommand "github.com/pulumi/pulumi-command/sdk/go/command/remote"
+	"github.com/UnstoppableMango/pulumi-commandx/sdk/go/commandx/internal"
+	"github.com/pulumi/pulumi-command/sdk/go/command/remote"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/unstoppablemango/pulumi-commandx/sdk/go/commandx/internal"
 )
 
 // Abstraction over the `hostnamectl` utility on a remote system.
@@ -20,9 +20,9 @@ type Hostnamectl struct {
 	// Path to the binary on the remote system. If omitted, the tool is assumed to be on $PATH
 	BinaryPath pulumi.StringOutput `pulumi:"binaryPath"`
 	// The underlying command
-	Command pulumiCommand.CommandOutput `pulumi:"command"`
+	Command remote.CommandOutput `pulumi:"command"`
 	// Connection details for the remote system
-	Connection pulumiCommand.ConnectionOutput `pulumi:"connection"`
+	Connection remote.ConnectionOutput `pulumi:"connection"`
 	// The command to run on create.
 	Create pulumi.AnyOutput `pulumi:"create"`
 	// The command to run on delete. The environment variables PULUMI_COMMAND_STDOUT
@@ -56,7 +56,7 @@ func NewHostnamectl(ctx *pulumi.Context,
 	if args.Connection == nil {
 		return nil, errors.New("invalid value for required argument 'Connection'")
 	}
-	args.Connection = args.Connection.ToConnectionOutput().ApplyT(func(v pulumiCommand.Connection) pulumiCommand.Connection { return *v.Defaults() }).(pulumiCommand.ConnectionOutput)
+	args.Connection = args.Connection.ToConnectionOutput().ApplyT(func(v remote.Connection) remote.Connection { return *v.Defaults() }).(remote.ConnectionOutput)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Hostnamectl
 	err := ctx.RegisterRemoteComponentResource("commandx:remote:Hostnamectl", name, args, &resource, opts...)
@@ -70,7 +70,7 @@ type hostnamectlArgs struct {
 	// Path to the binary on the remote system. If omitted, the tool is assumed to be on $PATH
 	BinaryPath *string `pulumi:"binaryPath"`
 	// Connection details for the remote system
-	Connection pulumiCommand.Connection `pulumi:"connection"`
+	Connection remote.Connection `pulumi:"connection"`
 	// The command to run on create.
 	Create interface{} `pulumi:"create"`
 	// The command to run on delete. The environment variables PULUMI_COMMAND_STDOUT
@@ -95,7 +95,7 @@ type HostnamectlArgs struct {
 	// Path to the binary on the remote system. If omitted, the tool is assumed to be on $PATH
 	BinaryPath pulumi.StringPtrInput
 	// Connection details for the remote system
-	Connection pulumiCommand.ConnectionInput
+	Connection remote.ConnectionInput
 	// The command to run on create.
 	Create interface{}
 	// The command to run on delete. The environment variables PULUMI_COMMAND_STDOUT
@@ -208,13 +208,13 @@ func (o HostnamectlOutput) BinaryPath() pulumi.StringOutput {
 }
 
 // The underlying command
-func (o HostnamectlOutput) Command() pulumiCommand.CommandOutput {
-	return o.ApplyT(func(v *Hostnamectl) pulumiCommand.CommandOutput { return v.Command }).(pulumiCommand.CommandOutput)
+func (o HostnamectlOutput) Command() remote.CommandOutput {
+	return o.ApplyT(func(v *Hostnamectl) remote.CommandOutput { return v.Command }).(remote.CommandOutput)
 }
 
 // Connection details for the remote system
-func (o HostnamectlOutput) Connection() pulumiCommand.ConnectionOutput {
-	return o.ApplyT(func(v *Hostnamectl) pulumiCommand.ConnectionOutput { return v.Connection }).(pulumiCommand.ConnectionOutput)
+func (o HostnamectlOutput) Connection() remote.ConnectionOutput {
+	return o.ApplyT(func(v *Hostnamectl) remote.ConnectionOutput { return v.Connection }).(remote.ConnectionOutput)
 }
 
 // The command to run on create.

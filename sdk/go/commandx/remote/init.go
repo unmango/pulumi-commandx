@@ -6,9 +6,9 @@ package remote
 import (
 	"fmt"
 
+	"github.com/UnstoppableMango/pulumi-commandx/sdk/go/commandx/internal"
 	"github.com/blang/semver"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/unstoppablemango/pulumi-commandx/sdk/go/commandx/internal"
 )
 
 type module struct {

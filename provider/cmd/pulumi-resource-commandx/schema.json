@@ -23,11 +23,8 @@
         },
         "go": {
             "generateResourceContainerTypes": true,
-            "importBasePath": "github.com/unstoppablemango/pulumi-commandx/sdk/go/commandx",
-            "liftSingleValueMethodReturns": true,
-            "packageImportAliases": {
-                "github.com/pulumi/pulumi-command/sdk/go/command/remote": "pulumiCommand"
-            }
+            "importBasePath": "github.com/UnstoppableMango/pulumi-commandx/sdk/go/commandx",
+            "liftSingleValueMethodReturns": true
         },
         "java": {
             "basePackage": "com.unmango",

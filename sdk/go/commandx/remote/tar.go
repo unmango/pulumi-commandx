@@ -8,9 +8,9 @@ import (
 	"reflect"
 
 	"errors"
-	pulumiCommand "github.com/pulumi/pulumi-command/sdk/go/command/remote"
+	"github.com/UnstoppableMango/pulumi-commandx/sdk/go/commandx/internal"
+	"github.com/pulumi/pulumi-command/sdk/go/command/remote"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/unstoppablemango/pulumi-commandx/sdk/go/commandx/internal"
 )
 
 // Abstraction over the `tar` utility on a remote system.
@@ -20,9 +20,9 @@ type Tar struct {
 	// Path to the binary on the remote system. If omitted, the tool is assumed to be on $PATH
 	BinaryPath pulumi.StringOutput `pulumi:"binaryPath"`
 	// The underlying command
-	Command pulumiCommand.CommandOutput `pulumi:"command"`
+	Command remote.CommandOutput `pulumi:"command"`
 	// Connection details for the remote system
-	Connection pulumiCommand.ConnectionOutput `pulumi:"connection"`
+	Connection remote.ConnectionOutput `pulumi:"connection"`
 	// The command to run on create.
 	Create pulumi.AnyOutput `pulumi:"create"`
 	// The command to run on delete. The environment variables PULUMI_COMMAND_STDOUT
@@ -56,7 +56,7 @@ func NewTar(ctx *pulumi.Context,
 	if args.Connection == nil {
 		return nil, errors.New("invalid value for required argument 'Connection'")
 	}
-	args.Connection = args.Connection.ToConnectionOutput().ApplyT(func(v pulumiCommand.Connection) pulumiCommand.Connection { return *v.Defaults() }).(pulumiCommand.ConnectionOutput)
+	args.Connection = args.Connection.ToConnectionOutput().ApplyT(func(v remote.Connection) remote.Connection { return *v.Defaults() }).(remote.ConnectionOutput)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Tar
 	err := ctx.RegisterRemoteComponentResource("commandx:remote:Tar", name, args, &resource, opts...)
@@ -70,7 +70,7 @@ type tarArgs struct {
 	// Path to the binary on the remote system. If omitted, the tool is assumed to be on $PATH
 	BinaryPath *string `pulumi:"binaryPath"`
 	// Connection details for the remote system
-	Connection pulumiCommand.Connection `pulumi:"connection"`
+	Connection remote.Connection `pulumi:"connection"`
 	// The command to run on create.
 	Create interface{} `pulumi:"create"`
 	// The command to run on delete. The environment variables PULUMI_COMMAND_STDOUT
@@ -95,7 +95,7 @@ type TarArgs struct {
 	// Path to the binary on the remote system. If omitted, the tool is assumed to be on $PATH
 	BinaryPath pulumi.StringPtrInput
 	// Connection details for the remote system
-	Connection pulumiCommand.ConnectionInput
+	Connection remote.ConnectionInput
 	// The command to run on create.
 	Create interface{}
 	// The command to run on delete. The environment variables PULUMI_COMMAND_STDOUT
@@ -208,13 +208,13 @@ func (o TarOutput) BinaryPath() pulumi.StringOutput {
 }
 
 // The underlying command
-func (o TarOutput) Command() pulumiCommand.CommandOutput {
-	return o.ApplyT(func(v *Tar) pulumiCommand.CommandOutput { return v.Command }).(pulumiCommand.CommandOutput)
+func (o TarOutput) Command() remote.CommandOutput {
+	return o.ApplyT(func(v *Tar) remote.CommandOutput { return v.Command }).(remote.CommandOutput)
 }
 
 // Connection details for the remote system
-func (o TarOutput) Connection() pulumiCommand.ConnectionOutput {
-	return o.ApplyT(func(v *Tar) pulumiCommand.ConnectionOutput { return v.Connection }).(pulumiCommand.ConnectionOutput)
+func (o TarOutput) Connection() remote.ConnectionOutput {
+	return o.ApplyT(func(v *Tar) remote.ConnectionOutput { return v.Connection }).(remote.ConnectionOutput)
 }
 
 // The command to run on create.
