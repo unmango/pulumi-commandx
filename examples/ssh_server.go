@@ -64,23 +64,9 @@ func StartSshServer(ctx context.Context, opts ...SshServerOption) (SshServer, er
 	}
 
 	req := testcontainers.ContainerRequest{
-		// Idfk why this is being dumb
-		// FromDockerfile: testcontainers.FromDockerfile{
-		// 	ContextArchive: bytes.NewReader(buf.Bytes()),
-		// },
 		Image:        "commandx:dev",
 		ExposedPorts: []string{internalPort},
-		// Env: map[string]string{
-		// 	"PUID":            "1000",
-		// 	"PGID":            "1000",
-		// 	"TZ":              "America/Chicago",
-		// 	"USER_NAME":       options.Username,
-		// 	"PASSWORD_ACCESS": strconv.FormatBool(options.Password != ""),
-		// 	"USER_PASSWORD":   options.Password,
-		// 	"PUBLIC_KEY":      options.PublicKey,
-		// 	"SUDO_ACCESS":     "true",
-		// },
-		Privileged: true,
+		Privileged:   true,
 		HostConfigModifier: func(hc *container.HostConfig) {
 			hc.CapAdd = append(hc.CapAdd, "ALL")
 		},

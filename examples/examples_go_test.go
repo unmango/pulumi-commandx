@@ -43,7 +43,7 @@ func getGoBaseOptions(t *testing.T) integration.ProgramTestOptions {
 
 	baseGo := base.With(integration.ProgramTestOptions{
 		Dependencies: []string{
-			fmt.Sprintf("github.com/unstoppablemango/pulumi-commandx/sdk=%s", rootSdkPath),
+			fmt.Sprintf("github.com/UnstoppableMango/pulumi-commandx/sdk=%s", rootSdkPath),
 		},
 		Env: []string{
 			fmt.Sprintf("PULUMI_GO_DEP_ROOT=%s", goDepRoot),
