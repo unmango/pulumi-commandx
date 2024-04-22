@@ -1,0 +1,39 @@
+{
+    "compilerOptions": {
+        "outDir": "bin",
+        "target": "es2016",
+        "module": "commonjs",
+        "moduleResolution": "node",
+        "declaration": true,
+        "inlineSourceMap": true,
+        "stripInternal": true,
+        "experimentalDecorators": true,
+        "noFallthroughCasesInSwitch": true,
+        "forceConsistentCasingInFileNames": true,
+        "strict": true
+    },
+    "files": [
+        "index.ts",
+        "provider.ts",
+        "remote/chmod.ts",
+        "remote/curl.ts",
+        "remote/etcdctl.ts",
+        "remote/hostnamectl.ts",
+        "remote/index.ts",
+        "remote/mkdir.ts",
+        "remote/mktemp.ts",
+        "remote/mv.ts",
+        "remote/rm.ts",
+        "remote/sed.ts",
+        "remote/systemctl.ts",
+        "remote/tar.ts",
+        "remote/tee.ts",
+        "remote/wget.ts",
+        "types/enums/index.ts",
+        "types/enums/remote/index.ts",
+        "types/index.ts",
+        "types/input.ts",
+        "types/output.ts",
+        "utilities.ts"
+    ]
+}

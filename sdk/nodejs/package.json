@@ -1,0 +1,28 @@
+{
+    "name": "@unmango/pulumi-commandx",
+    "version": "${VERSION}",
+    "keywords": [
+        "pulumi",
+        "command",
+        "category/utility",
+        "kind/component"
+    ],
+    "repository": "https://github.com/UnstoppableMango/pulumi-commandx",
+    "license": "Apache-2.0",
+    "scripts": {
+        "build": "tsc"
+    },
+    "dependencies": {
+        "@pulumi/command": "^0.10.0",
+        "@pulumi/pulumi": "^3.0.0"
+    },
+    "devDependencies": {
+        "@types/node": "^18",
+        "typescript": "^4.6.2"
+    },
+    "pulumi": {
+        "resource": true,
+        "name": "commandx",
+        "server": "github://api.github.com/UnstoppableMango"
+    }
+}
