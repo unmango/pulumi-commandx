@@ -22,7 +22,7 @@ func generateCurl() tool {
 		"certStatus":         props.Boolean("(TLS) Tells curl to verify the status of the server certificate by using the Certificate Status Request (aka. OCSP stapling) TLS extension."),
 		"certType": {
 			Description: "(TLS) Tells curl what type the provided client certificate is using.",
-			TypeSpec:    types.LocalType("CurlCertType", "tools"),
+			TypeSpec:    types.LocalType("CurlCertType", "remote"),
 		},
 		"ciphers":        props.String("(TLS) Specifies which ciphers to use in the connection."),
 		"compressed":     props.Boolean("(HTTP) Request a compressed response using one of the algorithms curl supports, and automatically decompress the content."),
@@ -45,7 +45,7 @@ func generateCurl() tool {
 		"dataUrlEncode":  props.String("(HTTP) This posts data, similar to the other -d, --data options with the exception that this performs URL-encoding."),
 		"delegation": {
 			Description: "(GSS/kerberos) Set LEVEL to tell the server what it is allowed to delegate when it comes to user credentials.",
-			TypeSpec:    types.LocalType("CurlDelegationLevel", "tools"),
+			TypeSpec:    types.LocalType("CurlDelegationLevel", "remote"),
 		},
 		"digest":                props.Boolean("(HTTP) Enables HTTP Digest authentication."),
 		"disable":               props.Boolean("If used as the first parameter on the command line, the curlrc config file will not be read and used."),

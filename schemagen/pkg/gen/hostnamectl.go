@@ -11,13 +11,13 @@ func generateHostnamectl() tool {
 		"arg": props.String("The argument for the specified `command`."),
 		"command": {
 			Description: "Corresponds to the {COMMAND} argument.",
-			TypeSpec:    types.LocalType("HostnamectlCommand", "tools"),
+			TypeSpec:    types.LocalType("HostnamectlCommand", "remote"),
 		},
 		"help": props.Boolean("Print a short help text and exit."),
 		"host": props.String("Execute the operation remotely. Specify a hostname, or a username and hostname separated by '@', to connect to."),
 		"json": {
 			Description: "Shows output formatted as JSON.",
-			TypeSpec:    types.LocalType("HostnamectlJsonMode", "tools"),
+			TypeSpec:    types.LocalType("HostnamectlJsonMode", "remote"),
 		},
 		"machine":       props.String("Execute operation on a local container. Specify a container name to connect to, optionally prefixed by a user name to connect as and a separating '@' character."),
 		"noAskPassword": props.Boolean("Do not query the user for authentication for privileged operations."),
@@ -48,7 +48,7 @@ func generateHostnamectl() tool {
 // 		Properties: implicitOutputs(inputs, map[string]schema.PropertySpec{
 // 			"hostnamectlCommand": {
 // 				Description: "Corresponds to the {COMMAND} argument.",
-// 				TypeSpec:    types.LocalType("HostnamectlCommand", "tools"),
+// 				TypeSpec:    types.LocalType("HostnamectlCommand", "remote"),
 // 			},
 // 		}),
 // 		Required: append(required,

@@ -13,7 +13,7 @@ func generateTee() tool {
 		"ignoreInterrupts": props.Boolean("Ignore interrupt signals."),
 		"outputError": {
 			Description: "Set behavior on write error.",
-			TypeSpec:    types.LocalType("TeeMode", "tools"),
+			TypeSpec:    types.LocalType("TeeMode", "remote"),
 		},
 		"pipe":    props.Boolean("Operate in a more appropriate MODE with pipes."),
 		"version": props.Boolean("Output version information and exit."),

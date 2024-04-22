@@ -12,7 +12,7 @@ func generateEtcdctl() tool {
 		"cert":   props.String("TODO"),
 		"commands": {
 			Description: "TODO",
-			TypeSpec:    types.LocalType("EtcdctlCommand", "tools"),
+			TypeSpec:    types.LocalType("EtcdctlCommand", "remote"),
 		},
 		"endpoints": props.String("TODO"),
 		"key":       props.String("TODO"),

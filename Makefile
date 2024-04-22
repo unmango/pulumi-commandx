@@ -147,8 +147,8 @@ clean:
 
 vendor: provider/scripts/vendor/pulumi-schema.d.ts
 
-.PHONY: upgrade_tools upgrade_java upgrade_pulumi upgrade_pulumictl upgrade_schematools upgrade_yq
-upgrade_tools: upgrade_java upgrade_pulumi upgrade_pulumictl upgrade_schematools upgrade_yq
+.PHONY: upgrade_tools upgrade_java upgrade_pulumi upgrade_pulumictl upgrade_schematools
+upgrade_tools: upgrade_java upgrade_pulumi upgrade_pulumictl upgrade_schematools
 upgrade_java:
 	gh release list --repo pulumi/pulumi-java --exclude-drafts --exclude-pre-releases --limit 1 | cut -f1 > .pulumi-java-gen.version
 upgrade_pulumi:
@@ -157,8 +157,6 @@ upgrade_pulumictl:
 	gh release list --repo pulumi/pulumictl --exclude-drafts --exclude-pre-releases --limit 1 | cut -f1 | sed 's/^v//' > .pulumictl.version
 upgrade_schematools:
 	gh release list --repo pulumi/schema-tools --exclude-drafts --exclude-pre-releases --limit 1 | cut -f1 | sed 's/^v//' > .schema-tools.version
-upgrade_yq:
-	gh release list --repo mikefarah/yq --exclude-drafts --exclude-pre-releases --limit 1 | cut -f1 | sed 's/^v//' > .yq.version
 
 # --------- File-based targets --------- #
 
@@ -193,16 +191,6 @@ bin/schema-tools: .schema-tools.version
 bin/gotestfmt:
 	@mkdir -p bin
 	GOBIN="${WORKING_DIR}/bin" go install github.com/gotesttools/gotestfmt/v2/cmd/gotestfmt@v2.5.0
-
-bin/yq: YQ_VERSION := $(shell cat .yq.version)
-bin/yq: PLAT := $(shell go version | sed -En "s/go version go.* (.*)\/(.*)/\1_\2/p")
-bin/yq: BINARY := yq_$(PLAT)
-bin/yq: .yq.version
-	@mkdir -p bin
-	wget https://github.com/mikefarah/yq/releases/download/v$(YQ_VERSION)/${BINARY}.tar.gz -O - |\
-		tar xz ./${BINARY} && mv ${BINARY} $(WORKING_DIR)/bin/yq
-	@touch bin/yq
-	@./bin/yq --version
 
 bin/$(LOCAL_PROVIDER_FILENAME): bin/pulumictl .make/provider_mod_download provider/cmd/$(PROVIDER)/schema.json $(PROVIDER_SRC) $(PROVIDER_PKG)
 	cd provider/cmd/${PROVIDER}/ && \
@@ -267,8 +255,6 @@ provider/scripts/vendor/pulumi-schema.d.ts: .awsx.version
 	.pulumi/bin/pulumi package gen-sdk $(SCHEMA_FILE) --language nodejs
 	sed -i.bak -e "s/sourceMap/inlineSourceMap/g" sdk/nodejs/tsconfig.json
 	sed -i.bak -e 's/"remote"/".\/remote"/g' sdk/nodejs/*.ts
-	sed -i.bak -e 's/"tls"/".\/tls"/g' sdk/nodejs/*.ts
-	sed -i.bak -e 's/"tools"/".\/tools"/g' sdk/nodejs/*.ts
 	rm sdk/nodejs/*.bak
 	@touch $@
 
@@ -282,7 +268,7 @@ provider/scripts/vendor/pulumi-schema.d.ts: .awsx.version
 	rm -rf sdk/dotnet
 	.pulumi/bin/pulumi package gen-sdk $(SCHEMA_FILE) --language dotnet
 	sed -i.bak -e "s/<\/Nullable>/<\/Nullable>\n    <UseSharedCompilation>false<\/UseSharedCompilation>/g" sdk/dotnet/UnMango.Commandx.csproj
-	rm sdk/dotnet/*.bak sdk/dotnet/**/*.bak
+	rm -f sdk/dotnet/*.bak sdk/dotnet/**/*.bak
 	@touch $@
 
 .make/generate_go: bin/pulumictl .pulumi/bin/pulumi provider/cmd/$(PROVIDER)/schema.json

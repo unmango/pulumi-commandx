@@ -11,7 +11,7 @@ func generateSystemctl() tool {
 		"command": { // The common output will overwrite this, that's fine.
 			Description: "Corresponds to the COMMAND argument.",
 			TypeSpec: schema.TypeSpec{
-				Ref:   types.LocalType("SystemctlCommand", "tools").Ref,
+				Ref:   types.LocalType("SystemctlCommand", "remote").Ref,
 				Plain: true,
 			},
 		},

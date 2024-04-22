@@ -2,8 +2,6 @@ import * as pulumi from '@pulumi/pulumi';
 import { ComponentResourceOptions, Inputs } from '@pulumi/pulumi';
 import * as provider from '@pulumi/pulumi/provider';
 import { ConstructResult, InvokeResult } from '@pulumi/pulumi/provider';
-import { EtcdInstall, File } from './remote';
-import { Certificate, ClusterPki, RootCa } from './tls';
 import { construct } from './resources';
 import { functions } from './functions';
 import { resourceToConstructResult } from './util';
@@ -14,12 +12,6 @@ export class Provider implements provider.Provider {
       version: version,
       construct(name, type, urn) {
         switch (type) {
-          case 'commandx:tls:Certificate':
-            return new Certificate(name, <any>undefined, { urn });
-          case 'commandx:tls:ClusterPki':
-            return new ClusterPki(name, <any>undefined, { urn });
-          case 'commandx:tls:RootCa':
-            return new RootCa(name, <any>undefined, { urn });
           default:
             throw new Error(`unknown resource type ${type}`);
         }
@@ -30,10 +22,6 @@ export class Provider implements provider.Provider {
       version: version,
       construct(name, type, urn) {
         switch (type) {
-          case 'commandx:remote:EtcdInstall':
-            return new EtcdInstall(name, <any>undefined, { urn });
-          case 'commandx:remote:File':
-            return new File(name, <any>undefined, { urn });
           default:
             throw new Error(`unknown resource type ${type}`);
         }

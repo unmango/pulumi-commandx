@@ -54,11 +54,11 @@ func Generate(commandSpec schema.PackageSpec) schema.PackageSpec {
 }
 
 func qualifyName(x string) string {
-	return fmt.Sprintf("commandx:tools:%s", x)
+	return fmt.Sprintf("commandx:remote:%s", x)
 }
 
 func optsType(x string) schema.TypeSpec {
-	typ := types.LocalType(x+"Opts", "tools")
+	typ := types.LocalType(x+"Opts", "remote")
 	typ.Plain = true
 	return typ
 }
