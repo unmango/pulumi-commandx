@@ -1,4 +1,5 @@
 export * from './chmod';
+export * from './curl';
 export * from './etcdctl';
 export * from './hostnamectl';
 export * from './mkdir';

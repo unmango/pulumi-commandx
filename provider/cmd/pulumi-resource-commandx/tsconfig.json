@@ -20,6 +20,7 @@
     "schema-types.ts",
     "remote/chmod.ts",
     "remote/commandBuilder.ts",
+    "remote/curl.ts",
     "remote/etcdctl.ts",
     "remote/hostnamectl.ts",
     "remote/index.ts",
