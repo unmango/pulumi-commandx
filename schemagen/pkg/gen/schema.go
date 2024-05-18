@@ -33,6 +33,7 @@ func GenerateSchema(packageDir string) schema.PackageSpec {
 				"rootNamespace":                "UnMango",
 				"dictionaryConstructors":       true,
 				"liftSingleValueMethodReturns": true,
+				"respectSchemaVersion":         true,
 				"packageReferences": map[string]string{
 					"Pulumi":         "3.*",
 					"Pulumi.Command": "0.9.*",
@@ -42,6 +43,7 @@ func GenerateSchema(packageDir string) schema.PackageSpec {
 				"generateResourceContainerTypes": true,
 				"liftSingleValueMethodReturns":   true,
 				"importBasePath":                 "github.com/UnstoppableMango/pulumi-commandx/sdk/go/commandx",
+				"respectSchemaVersion":           true,
 				// "packageImportAliases": map[string]string{
 				// 	"github.com/pulumi/pulumi-command/sdk/go/command/remote": "pulumiCommand",
 				// },
@@ -49,6 +51,7 @@ func GenerateSchema(packageDir string) schema.PackageSpec {
 			"nodejs": rawMessage(map[string]interface{}{
 				"packageName":                  "@unmango/pulumi-commandx",
 				"liftSingleValueMethodReturns": true,
+				"respectSchemaVersion":         true,
 				"dependencies": map[string]string{
 					"@pulumi/pulumi":  "^3.0.0",
 					"@pulumi/command": "^" + dependencies.Command,
@@ -60,6 +63,7 @@ func GenerateSchema(packageDir string) schema.PackageSpec {
 			}),
 			"python": rawMessage(map[string]interface{}{
 				"liftSingleValueMethodReturns": true,
+				"respectSchemaVersion":         true,
 				"pyproject": map[string]bool{
 					"enabled": true,
 				},
