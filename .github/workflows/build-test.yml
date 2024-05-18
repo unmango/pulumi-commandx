@@ -58,6 +58,7 @@ jobs:
             sdk/nodejs/package.json
             sdk/python/pyproject.toml
             sdk/java/build.gradle
+      - run: git status --porcelain
 
   build_sdks:
     needs: prerequisites
@@ -105,6 +106,7 @@ jobs:
             sdk/nodejs/package.json
             sdk/python/pyproject.toml
             sdk/java/build.gradle
+      - run: git status --porcelain
 
       - name: Tar SDK folder
         run: tar -zcf sdk/${{ matrix.language }}.tar.gz -C sdk/${{ matrix.language }} .
