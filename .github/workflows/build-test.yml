@@ -49,7 +49,14 @@ jobs:
         uses: ./.github/actions/prerequisites-artifact-capture
 
       - name: Check worktree clean
-        uses: ./.github/actions/check-worktree-clean
+        uses: pulumi/git-status-check-action@v1
+        with:
+          allowed-changes: |-
+            sdk/**/pulumi-plugin.json
+            sdk/dotnet/Pulumi.*.csproj
+            sdk/go/*/internal/pulumiUtilities.go
+            sdk/nodejs/package.json
+            sdk/python/pyproject.toml
 
   build_sdks:
     needs: prerequisites
@@ -88,7 +95,14 @@ jobs:
         run: make build_${{ matrix.language }}
 
       - name: Check worktree clean
-        uses: ./.github/actions/check-worktree-clean
+        uses: pulumi/git-status-check-action@v1
+        with:
+          allowed-changes: |-
+            sdk/**/pulumi-plugin.json
+            sdk/dotnet/Pulumi.*.csproj
+            sdk/go/*/internal/pulumiUtilities.go
+            sdk/nodejs/package.json
+            sdk/python/pyproject.toml
 
       - name: Tar SDK folder
         run: tar -zcf sdk/${{ matrix.language }}.tar.gz -C sdk/${{ matrix.language }} .
