@@ -1,6 +1,6 @@
 {
     "name": "@unmango/pulumi-commandx",
-    "version": "${VERSION}",
+    "version": "0.0.1",
     "keywords": [
         "pulumi",
         "command",
@@ -23,6 +23,7 @@
     "pulumi": {
         "resource": true,
         "name": "commandx",
+        "version": "0.0.1",
         "server": "github://api.github.com/UnstoppableMango"
     }
 }
