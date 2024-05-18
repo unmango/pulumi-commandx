@@ -288,7 +288,7 @@ provider/scripts/vendor/pulumi-schema.d.ts: .awsx.version
 .make/build_nodejs: bin/pulumictl .make/nodejs_yarn_install
 	cd sdk/nodejs/ && \
 		NODE_OPTIONS=--max-old-space-size=12288 yarn run tsc --diagnostics --incremental && \
-		cp ../../README.md ../../LICENSE package.json yarn.lock ./bin/ && \
+		cp ../../README.md ../../LICENSE package.json yarn.lock ./bin/
 	@touch $@
 
 .make/build_python: bin/pulumictl .make/generate_python
