@@ -247,12 +247,12 @@ provider/scripts/vendor/pulumi-schema.d.ts: .awsx.version
 
 .make/generate_java: bin/pulumictl .pulumi/bin/pulumi provider/cmd/$(PROVIDER)/schema.json
 	rm -rf sdk/java
-	.pulumi/bin/pulumi package gen-sdk $(SCHEMA_FILE) --language java
+	.pulumi/bin/pulumi package gen-sdk $(SCHEMA_FILE) --language java --version "${VERSION_GENERIC}"
 	@touch $@
 
 .make/generate_nodejs: bin/pulumictl .pulumi/bin/pulumi provider/cmd/$(PROVIDER)/schema.json
 	rm -rf sdk/nodejs
-	.pulumi/bin/pulumi package gen-sdk $(SCHEMA_FILE) --language nodejs
+	.pulumi/bin/pulumi package gen-sdk $(SCHEMA_FILE) --language nodejs --version "${VERSION_GENERIC}"
 	sed -i.bak -e "s/sourceMap/inlineSourceMap/g" sdk/nodejs/tsconfig.json
 	sed -i.bak -e 's/"remote"/".\/remote"/g' sdk/nodejs/*.ts
 	rm sdk/nodejs/*.bak
@@ -260,20 +260,20 @@ provider/scripts/vendor/pulumi-schema.d.ts: .awsx.version
 
 .make/generate_python: bin/pulumictl .pulumi/bin/pulumi provider/cmd/$(PROVIDER)/schema.json
 	rm -rf sdk/python
-	.pulumi/bin/pulumi package gen-sdk $(SCHEMA_FILE) --language python
+	.pulumi/bin/pulumi package gen-sdk $(SCHEMA_FILE) --language python --version "${VERSION_GENERIC}"
 	cp README.md sdk/python
 	@touch $@
 
 .make/generate_dotnet: bin/pulumictl .pulumi/bin/pulumi provider/cmd/$(PROVIDER)/schema.json
 	rm -rf sdk/dotnet
-	.pulumi/bin/pulumi package gen-sdk $(SCHEMA_FILE) --language dotnet
+	.pulumi/bin/pulumi package gen-sdk $(SCHEMA_FILE) --language dotnet --version "${VERSION_GENERIC}"
 	sed -i.bak -e "s/<\/Nullable>/<\/Nullable>\n    <UseSharedCompilation>false<\/UseSharedCompilation>/g" sdk/dotnet/UnMango.Commandx.csproj
 	rm -f sdk/dotnet/*.bak sdk/dotnet/**/*.bak
 	@touch $@
 
 .make/generate_go: bin/pulumictl .pulumi/bin/pulumi provider/cmd/$(PROVIDER)/schema.json
 	rm -rf sdk/go
-	.pulumi/bin/pulumi package gen-sdk $(SCHEMA_FILE) --language go
+	.pulumi/bin/pulumi package gen-sdk $(SCHEMA_FILE) --language go --version "${VERSION_GENERIC}"
 	@touch $@
 
 .make/generate_types: vendor provider/cmd/$(PROVIDER)/schema.json
@@ -285,32 +285,26 @@ provider/scripts/vendor/pulumi-schema.d.ts: .awsx.version
 	yarn install --cwd sdk/nodejs
 	@touch $@
 
-.make/build_nodejs: VERSION_JS = $(shell bin/pulumictl convert-version -l javascript -v "$(VERSION_GENERIC)")
 .make/build_nodejs: bin/pulumictl .make/nodejs_yarn_install
 	cd sdk/nodejs/ && \
 		NODE_OPTIONS=--max-old-space-size=12288 yarn run tsc --diagnostics --incremental && \
 		cp ../../README.md ../../LICENSE package.json yarn.lock ./bin/ && \
-		sed -i.bak -e "s/\$${VERSION}/$(VERSION_JS)/g" ./bin/package.json
 	@touch $@
 
-.make/build_python: VERSION_PYTHON = $(shell bin/pulumictl convert-version -l python -v "$(VERSION_GENERIC)")
 .make/build_python: bin/pulumictl .make/generate_python
 	cd sdk/python && \
 		git clean -fxd && \
 		rm -rf ./bin/ ../python.bin/ && cp -R . ../python.bin && mv ../python.bin ./bin && \
-		sed -i.bak -e 's/^  version = .*/  version = "$(VERSION_PYTHON)"/g' ./bin/pyproject.toml && \
-		rm ./bin/pyproject.toml.bak && \
 		python3 -m venv venv && \
 		./venv/bin/python -m pip install build && \
 		cd ./bin && \
 		../venv/bin/python -m build .
 	@touch $@
 
-.make/build_dotnet: VERSION_DOTNET = $(shell bin/pulumictl convert-version -l dotnet -v "$(PROVIDER_VERSION)")
 .make/build_dotnet: bin/pulumictl .make/generate_dotnet
 	cd sdk/dotnet && \
-		echo "$(VERSION_DOTNET)" >version.txt && \
-		dotnet build /p:Version=$(VERSION_DOTNET)
+		echo "$(VERSION_GENERIC)" >version.txt && \
+		dotnet build
 	@touch $@
 
 .make/build_java: bin/pulumictl .make/generate_java
