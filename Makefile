@@ -77,6 +77,9 @@ install_provider: .make/install_provider
 .PHONY: docker
 docker: .make/examples_dockerfile
 
+.PHONY: codegen
+codegen: generate_schema
+
 .PHONY: generate generate_java generate_nodejs generate_python generate_dotnet generate_go generate_types generate_schema
 generate: generate_schema generate_types generate_java generate_nodejs generate_python generate_dotnet generate_go
 generate_java: .make/generate_java
