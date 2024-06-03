@@ -11,13 +11,19 @@ import (
 )
 
 func getBaseOptions(t *testing.T) integration.ProgramTestOptions {
-	return integration.ProgramTestOptions{
-		Bin: path.Join(getCwd(t), "..", ".pulumi", "bin", "pulumi"),
+	result := integration.ProgramTestOptions{
 		LocalProviders: []integration.LocalDependency{{
 			Package: "commandx",
 			Path:    path.Join(getCwd(t), "..", "bin"),
 		}},
 	}
+
+	pulumiBin := path.Join(getCwd(t), "..", ".pulumi", "bin", "pulumi")
+	if _, err := os.Stat(pulumiBin); err == nil {
+		result.Bin = pulumiBin
+	}
+
+	return result
 }
 
 func getCwd(t *testing.T) string {

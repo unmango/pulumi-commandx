@@ -77,6 +77,9 @@ install_provider: .make/install_provider
 .PHONY: docker
 docker: .make/examples_dockerfile
 
+.PHONY: codegen
+codegen: generate_schema
+
 .PHONY: generate generate_java generate_nodejs generate_python generate_dotnet generate_go generate_types generate_schema
 generate: generate_schema generate_types generate_java generate_nodejs generate_python generate_dotnet generate_go
 generate_java: .make/generate_java
@@ -320,7 +323,7 @@ provider/scripts/vendor/pulumi-schema.d.ts: .awsx.version
 	yarn link --cwd sdk/nodejs/bin
 	@touch $@
 
-.make/install_dotnet_sdk: .make/build_dotnet
+.make/install_dotnet_sdk:
 	@mkdir -p nuget
 	find sdk/dotnet/bin -name '*.nupkg' -print -exec cp -p {} ${WORKING_DIR}/nuget \;
 	if ! dotnet nuget list source | grep ${WORKING_DIR}; then \
