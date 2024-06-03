@@ -323,7 +323,7 @@ provider/scripts/vendor/pulumi-schema.d.ts: .awsx.version
 	yarn link --cwd sdk/nodejs/bin
 	@touch $@
 
-.make/install_dotnet_sdk: .make/build_dotnet
+.make/install_dotnet_sdk:
 	@mkdir -p nuget
 	find sdk/dotnet/bin -name '*.nupkg' -print -exec cp -p {} ${WORKING_DIR}/nuget \;
 	if ! dotnet nuget list source | grep ${WORKING_DIR}; then \
