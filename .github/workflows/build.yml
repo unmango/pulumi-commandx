@@ -329,7 +329,7 @@ jobs:
     - name: Install Pulumi CLI
       uses: pulumi/actions@v5
     - name: Run GoReleaser
-      uses: goreleaser/goreleaser-action@v5
+      uses: goreleaser/goreleaser-action@v6
       env:
         GORELEASER_CURRENT_TAG: v${{ steps.version.outputs.version }}
       with:
