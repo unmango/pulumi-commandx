@@ -23,6 +23,12 @@ namespace UnMango.Commandx.Remote.Inputs
         public UnMango.Commandx.Remote.SystemctlCommand Command { get; set; }
 
         /// <summary>
+        /// Corresponds to the `--now` option.
+        /// </summary>
+        [Input("now")]
+        public Input<bool>? Now { get; set; }
+
+        /// <summary>
         /// Corresponds to the [PATTERN] argument
         /// </summary>
         [Input("pattern")]

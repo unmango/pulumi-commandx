@@ -630,6 +630,10 @@ export namespace remote {
          */
         command: enums.remote.SystemctlCommand;
         /**
+         * Corresponds to the `--now` option.
+         */
+        now?: boolean;
+        /**
          * Corresponds to the [PATTERN] argument
          */
         pattern?: string;

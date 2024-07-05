@@ -22,6 +22,10 @@ namespace UnMango.Commandx.Remote.Outputs
         /// </summary>
         public readonly UnMango.Commandx.Remote.SystemctlCommand Command;
         /// <summary>
+        /// Corresponds to the `--now` option.
+        /// </summary>
+        public readonly bool? Now;
+        /// <summary>
         /// Corresponds to the [PATTERN] argument
         /// </summary>
         public readonly string? Pattern;
@@ -34,11 +38,14 @@ namespace UnMango.Commandx.Remote.Outputs
         private SystemctlOpts(
             UnMango.Commandx.Remote.SystemctlCommand command,
 
+            bool? now,
+
             string? pattern,
 
             string unit)
         {
             Command = command;
+            Now = now;
             Pattern = pattern;
             Unit = unit;
         }
