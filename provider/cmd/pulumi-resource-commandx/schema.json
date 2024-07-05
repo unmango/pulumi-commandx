@@ -60,7 +60,7 @@
             },
             "requires": {
                 "pulumi": "\u003e=3.91.1,\u003c4.0.0",
-                "pulumi-command": "\u003e=1.0.0,\u003c1.0.0"
+                "pulumi-command": "\u003e=1.0.0,\u003c2.0.0"
             },
             "respectSchemaVersion": true
         }
