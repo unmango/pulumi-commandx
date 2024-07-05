@@ -69,7 +69,7 @@ func GenerateSchema(packageDir string) schema.PackageSpec {
 				},
 				"requires": map[string]string{
 					"pulumi":         ">=3.91.1,<4.0.0",
-					"pulumi-command": fmt.Sprintf(">=%s,<1.0.0", dependencies.Command),
+					"pulumi-command": fmt.Sprintf(">=%s,<2.0.0", dependencies.Command),
 				},
 			}),
 			"java": rawMessage(map[string]interface{}{
