@@ -5,7 +5,7 @@ go 1.22
 require (
 	github.com/docker/docker v27.0.3+incompatible
 	github.com/docker/go-connections v0.5.0
-	github.com/pulumi/pulumi/pkg/v3 v3.122.0
+	github.com/pulumi/pulumi/pkg/v3 v3.127.0
 	github.com/stretchr/testify v1.9.0
 	github.com/testcontainers/testcontainers-go v0.32.0
 )
@@ -155,7 +155,7 @@ require (
 	github.com/power-devops/perfstat v0.0.0-20240221224432-82ca36839d55 // indirect
 	github.com/pulumi/appdash v0.0.0-20231130102222-75f619a67231 // indirect
 	github.com/pulumi/esc v0.9.1 // indirect
-	github.com/pulumi/pulumi/sdk/v3 v3.122.0 // indirect
+	github.com/pulumi/pulumi/sdk/v3 v3.127.0 // indirect
 	github.com/rivo/uniseg v0.4.7 // indirect
 	github.com/rogpeppe/go-internal v1.12.0 // indirect
 	github.com/ryanuber/go-glob v1.0.0 // indirect
