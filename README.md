@@ -1,5 +1,7 @@
 # Pulumi Commandx
 
+[![Hercules CI](https://hercules-ci.com/api/v1/site/github/account/unmango/project/pulumi-commandx/badge)](https://hercules-ci.com/github/unmango/pulumi-commandx)
+
 Mostly helper functions for creating statically typed `Command` resources.
 
 ## Development
