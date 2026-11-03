@@ -5,7 +5,7 @@
     "bin": "bin/index.js",
     "dependencies": {
         "@pulumi/command": "1.0.2",
-        "@pulumi/pulumi": "^3.111.1"
+        "@pulumi/pulumi": "^3.142.0"
     },
     "devDependencies": {
         "@types/node": "^20.0.0",
