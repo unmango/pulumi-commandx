@@ -16,7 +16,7 @@ env:
   PYPI_PASSWORD: ${{ secrets.PYPI_API_TOKEN }}
   PULUMI_GO_DEP_ROOT: ${{ github.workspace }}/..
   GOVERSION: 1.22.x
-  NODEVERSION: 20.x
+  NODEVERSION: 22.x
   PYTHONVERSION: "3.11"
   DOTNETVERSION: |
     6.0.x
