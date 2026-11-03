@@ -166,12 +166,12 @@ class Mv(pulumi.ComponentResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  binary_path: Optional[pulumi.Input[str]] = None,
                  connection: Optional[pulumi.Input[pulumi.InputType['pulumi_command.remote.ConnectionArgs']]] = None,
-                 create: Optional[Union[pulumi.Input[str], pulumi.Input[pulumi.InputType['MvOptsArgs']]]] = None,
-                 delete: Optional[Union[pulumi.Input[str], pulumi.Input[pulumi.InputType['MvOptsArgs']]]] = None,
+                 create: Optional[Union[pulumi.Input[str], pulumi.Input[Union['MvOptsArgs', 'MvOptsArgsDict']]]] = None,
+                 delete: Optional[Union[pulumi.Input[str], pulumi.Input[Union['MvOptsArgs', 'MvOptsArgsDict']]]] = None,
                  environment: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  stdin: Optional[pulumi.Input[str]] = None,
                  triggers: Optional[pulumi.Input[Sequence[Any]]] = None,
-                 update: Optional[Union[pulumi.Input[str], pulumi.Input[pulumi.InputType['MvOptsArgs']]]] = None,
+                 update: Optional[Union[pulumi.Input[str], pulumi.Input[Union['MvOptsArgs', 'MvOptsArgsDict']]]] = None,
                  __props__=None):
         """
         Abstraction over the `mv` utility on a remote system.
@@ -180,14 +180,14 @@ class Mv(pulumi.ComponentResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] binary_path: Path to the binary on the remote system. If omitted, the tool is assumed to be on $PATH
         :param pulumi.Input[pulumi.InputType['pulumi_command.remote.ConnectionArgs']] connection: Connection details for the remote system
-        :param Union[pulumi.Input[str], pulumi.Input[pulumi.InputType['MvOptsArgs']]] create: The command to run on create.
-        :param Union[pulumi.Input[str], pulumi.Input[pulumi.InputType['MvOptsArgs']]] delete: The command to run on delete. The environment variables PULUMI_COMMAND_STDOUT
+        :param Union[pulumi.Input[str], pulumi.Input[Union['MvOptsArgs', 'MvOptsArgsDict']]] create: The command to run on create.
+        :param Union[pulumi.Input[str], pulumi.Input[Union['MvOptsArgs', 'MvOptsArgsDict']]] delete: The command to run on delete. The environment variables PULUMI_COMMAND_STDOUT
                and PULUMI_COMMAND_STDERR are set to the stdout and stderr properties of the
                Command resource from previous create or update steps.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] environment: Environment variables
         :param pulumi.Input[str] stdin: TODO
         :param pulumi.Input[Sequence[Any]] triggers: TODO
-        :param Union[pulumi.Input[str], pulumi.Input[pulumi.InputType['MvOptsArgs']]] update: The command to run on update, if empty, create will 
+        :param Union[pulumi.Input[str], pulumi.Input[Union['MvOptsArgs', 'MvOptsArgsDict']]] update: The command to run on update, if empty, create will 
                run again. The environment variables PULUMI_COMMAND_STDOUT and PULUMI_COMMAND_STDERR 
                are set to the stdout and stderr properties of the Command resource from previous 
                create or update steps.
@@ -218,12 +218,12 @@ class Mv(pulumi.ComponentResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  binary_path: Optional[pulumi.Input[str]] = None,
                  connection: Optional[pulumi.Input[pulumi.InputType['pulumi_command.remote.ConnectionArgs']]] = None,
-                 create: Optional[Union[pulumi.Input[str], pulumi.Input[pulumi.InputType['MvOptsArgs']]]] = None,
-                 delete: Optional[Union[pulumi.Input[str], pulumi.Input[pulumi.InputType['MvOptsArgs']]]] = None,
+                 create: Optional[Union[pulumi.Input[str], pulumi.Input[Union['MvOptsArgs', 'MvOptsArgsDict']]]] = None,
+                 delete: Optional[Union[pulumi.Input[str], pulumi.Input[Union['MvOptsArgs', 'MvOptsArgsDict']]]] = None,
                  environment: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  stdin: Optional[pulumi.Input[str]] = None,
                  triggers: Optional[pulumi.Input[Sequence[Any]]] = None,
-                 update: Optional[Union[pulumi.Input[str], pulumi.Input[pulumi.InputType['MvOptsArgs']]]] = None,
+                 update: Optional[Union[pulumi.Input[str], pulumi.Input[Union['MvOptsArgs', 'MvOptsArgsDict']]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):

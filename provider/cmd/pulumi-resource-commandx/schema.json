@@ -34,7 +34,7 @@
             "dependencies": {
                 "com.google.code.findbugs:jsr305": "3.0.2",
                 "com.google.code.gson:gson": "2.8.9",
-                "com.pulumi:command": "1.0.0",
+                "com.pulumi:command": "1.0.2",
                 "com.pulumi:pulumi": "0.9.9"
             },
             "gradleNexusPublishPluginVersion": "1.1.0",
@@ -42,7 +42,7 @@
         },
         "nodejs": {
             "dependencies": {
-                "@pulumi/command": "^1.0.0",
+                "@pulumi/command": "^1.0.2",
                 "@pulumi/pulumi": "^3.0.0"
             },
             "devDependencies": {
@@ -60,7 +60,7 @@
             },
             "requires": {
                 "pulumi": "\u003e=3.91.1,\u003c4.0.0",
-                "pulumi-command": "\u003e=1.0.0,\u003c2.0.0"
+                "pulumi-command": "\u003e=1.0.2,\u003c2.0.0"
             },
             "respectSchemaVersion": true
         }
@@ -1106,11 +1106,11 @@
                     "description": "Path to the binary on the remote system. If omitted, the tool is assumed to be on $PATH"
                 },
                 "command": {
-                    "$ref": "/command/v1.0.0/schema.json#/resources/command:remote:Command",
+                    "$ref": "/command/v1.0.2/schema.json#/resources/command:remote:Command",
                     "description": "The underlying command"
                 },
                 "connection": {
-                    "$ref": "/command/v1.0.0/schema.json#/types/command:remote:Connection",
+                    "$ref": "/command/v1.0.2/schema.json#/types/command:remote:Connection",
                     "description": "Connection details for the remote system"
                 },
                 "create": {
@@ -1194,7 +1194,7 @@
                     "description": "Path to the binary on the remote system. If omitted, the tool is assumed to be on $PATH"
                 },
                 "connection": {
-                    "$ref": "/command/v1.0.0/schema.json#/types/command:remote:Connection",
+                    "$ref": "/command/v1.0.2/schema.json#/types/command:remote:Connection",
                     "description": "Connection details for the remote system"
                 },
                 "create": {
@@ -1268,11 +1268,11 @@
                     "description": "Path to the binary on the remote system. If omitted, the tool is assumed to be on $PATH"
                 },
                 "command": {
-                    "$ref": "/command/v1.0.0/schema.json#/resources/command:remote:Command",
+                    "$ref": "/command/v1.0.2/schema.json#/resources/command:remote:Command",
                     "description": "The underlying command"
                 },
                 "connection": {
-                    "$ref": "/command/v1.0.0/schema.json#/types/command:remote:Connection",
+                    "$ref": "/command/v1.0.2/schema.json#/types/command:remote:Connection",
                     "description": "Connection details for the remote system"
                 },
                 "create": {
@@ -1356,7 +1356,7 @@
                     "description": "Path to the binary on the remote system. If omitted, the tool is assumed to be on $PATH"
                 },
                 "connection": {
-                    "$ref": "/command/v1.0.0/schema.json#/types/command:remote:Connection",
+                    "$ref": "/command/v1.0.2/schema.json#/types/command:remote:Connection",
                     "description": "Connection details for the remote system"
                 },
                 "create": {
@@ -1430,11 +1430,11 @@
                     "description": "Path to the binary on the remote system. If omitted, the tool is assumed to be on $PATH"
                 },
                 "command": {
-                    "$ref": "/command/v1.0.0/schema.json#/resources/command:remote:Command",
+                    "$ref": "/command/v1.0.2/schema.json#/resources/command:remote:Command",
                     "description": "The underlying command"
                 },
                 "connection": {
-                    "$ref": "/command/v1.0.0/schema.json#/types/command:remote:Connection",
+                    "$ref": "/command/v1.0.2/schema.json#/types/command:remote:Connection",
                     "description": "Connection details for the remote system"
                 },
                 "create": {
@@ -1518,7 +1518,7 @@
                     "description": "Path to the binary on the remote system. If omitted, the tool is assumed to be on $PATH"
                 },
                 "connection": {
-                    "$ref": "/command/v1.0.0/schema.json#/types/command:remote:Connection",
+                    "$ref": "/command/v1.0.2/schema.json#/types/command:remote:Connection",
                     "description": "Connection details for the remote system"
                 },
                 "create": {
@@ -1592,11 +1592,11 @@
                     "description": "Path to the binary on the remote system. If omitted, the tool is assumed to be on $PATH"
                 },
                 "command": {
-                    "$ref": "/command/v1.0.0/schema.json#/resources/command:remote:Command",
+                    "$ref": "/command/v1.0.2/schema.json#/resources/command:remote:Command",
                     "description": "The underlying command"
                 },
                 "connection": {
-                    "$ref": "/command/v1.0.0/schema.json#/types/command:remote:Connection",
+                    "$ref": "/command/v1.0.2/schema.json#/types/command:remote:Connection",
                     "description": "Connection details for the remote system"
                 },
                 "create": {
@@ -1680,7 +1680,7 @@
                     "description": "Path to the binary on the remote system. If omitted, the tool is assumed to be on $PATH"
                 },
                 "connection": {
-                    "$ref": "/command/v1.0.0/schema.json#/types/command:remote:Connection",
+                    "$ref": "/command/v1.0.2/schema.json#/types/command:remote:Connection",
                     "description": "Connection details for the remote system"
                 },
                 "create": {
@@ -1754,11 +1754,11 @@
                     "description": "Path to the binary on the remote system. If omitted, the tool is assumed to be on $PATH"
                 },
                 "command": {
-                    "$ref": "/command/v1.0.0/schema.json#/resources/command:remote:Command",
+                    "$ref": "/command/v1.0.2/schema.json#/resources/command:remote:Command",
                     "description": "The underlying command"
                 },
                 "connection": {
-                    "$ref": "/command/v1.0.0/schema.json#/types/command:remote:Connection",
+                    "$ref": "/command/v1.0.2/schema.json#/types/command:remote:Connection",
                     "description": "Connection details for the remote system"
                 },
                 "create": {
@@ -1842,7 +1842,7 @@
                     "description": "Path to the binary on the remote system. If omitted, the tool is assumed to be on $PATH"
                 },
                 "connection": {
-                    "$ref": "/command/v1.0.0/schema.json#/types/command:remote:Connection",
+                    "$ref": "/command/v1.0.2/schema.json#/types/command:remote:Connection",
                     "description": "Connection details for the remote system"
                 },
                 "create": {
@@ -1916,11 +1916,11 @@
                     "description": "Path to the binary on the remote system. If omitted, the tool is assumed to be on $PATH"
                 },
                 "command": {
-                    "$ref": "/command/v1.0.0/schema.json#/resources/command:remote:Command",
+                    "$ref": "/command/v1.0.2/schema.json#/resources/command:remote:Command",
                     "description": "The underlying command"
                 },
                 "connection": {
-                    "$ref": "/command/v1.0.0/schema.json#/types/command:remote:Connection",
+                    "$ref": "/command/v1.0.2/schema.json#/types/command:remote:Connection",
                     "description": "Connection details for the remote system"
                 },
                 "create": {
@@ -2004,7 +2004,7 @@
                     "description": "Path to the binary on the remote system. If omitted, the tool is assumed to be on $PATH"
                 },
                 "connection": {
-                    "$ref": "/command/v1.0.0/schema.json#/types/command:remote:Connection",
+                    "$ref": "/command/v1.0.2/schema.json#/types/command:remote:Connection",
                     "description": "Connection details for the remote system"
                 },
                 "create": {
@@ -2078,11 +2078,11 @@
                     "description": "Path to the binary on the remote system. If omitted, the tool is assumed to be on $PATH"
                 },
                 "command": {
-                    "$ref": "/command/v1.0.0/schema.json#/resources/command:remote:Command",
+                    "$ref": "/command/v1.0.2/schema.json#/resources/command:remote:Command",
                     "description": "The underlying command"
                 },
                 "connection": {
-                    "$ref": "/command/v1.0.0/schema.json#/types/command:remote:Connection",
+                    "$ref": "/command/v1.0.2/schema.json#/types/command:remote:Connection",
                     "description": "Connection details for the remote system"
                 },
                 "create": {
@@ -2166,7 +2166,7 @@
                     "description": "Path to the binary on the remote system. If omitted, the tool is assumed to be on $PATH"
                 },
                 "connection": {
-                    "$ref": "/command/v1.0.0/schema.json#/types/command:remote:Connection",
+                    "$ref": "/command/v1.0.2/schema.json#/types/command:remote:Connection",
                     "description": "Connection details for the remote system"
                 },
                 "create": {
@@ -2240,11 +2240,11 @@
                     "description": "Path to the binary on the remote system. If omitted, the tool is assumed to be on $PATH"
                 },
                 "command": {
-                    "$ref": "/command/v1.0.0/schema.json#/resources/command:remote:Command",
+                    "$ref": "/command/v1.0.2/schema.json#/resources/command:remote:Command",
                     "description": "The underlying command"
                 },
                 "connection": {
-                    "$ref": "/command/v1.0.0/schema.json#/types/command:remote:Connection",
+                    "$ref": "/command/v1.0.2/schema.json#/types/command:remote:Connection",
                     "description": "Connection details for the remote system"
                 },
                 "create": {
@@ -2328,7 +2328,7 @@
                     "description": "Path to the binary on the remote system. If omitted, the tool is assumed to be on $PATH"
                 },
                 "connection": {
-                    "$ref": "/command/v1.0.0/schema.json#/types/command:remote:Connection",
+                    "$ref": "/command/v1.0.2/schema.json#/types/command:remote:Connection",
                     "description": "Connection details for the remote system"
                 },
                 "create": {
@@ -2402,11 +2402,11 @@
                     "description": "Path to the binary on the remote system. If omitted, the tool is assumed to be on $PATH"
                 },
                 "command": {
-                    "$ref": "/command/v1.0.0/schema.json#/resources/command:remote:Command",
+                    "$ref": "/command/v1.0.2/schema.json#/resources/command:remote:Command",
                     "description": "The underlying command"
                 },
                 "connection": {
-                    "$ref": "/command/v1.0.0/schema.json#/types/command:remote:Connection",
+                    "$ref": "/command/v1.0.2/schema.json#/types/command:remote:Connection",
                     "description": "Connection details for the remote system"
                 },
                 "create": {
@@ -2490,7 +2490,7 @@
                     "description": "Path to the binary on the remote system. If omitted, the tool is assumed to be on $PATH"
                 },
                 "connection": {
-                    "$ref": "/command/v1.0.0/schema.json#/types/command:remote:Connection",
+                    "$ref": "/command/v1.0.2/schema.json#/types/command:remote:Connection",
                     "description": "Connection details for the remote system"
                 },
                 "create": {
@@ -2564,11 +2564,11 @@
                     "description": "Path to the binary on the remote system. If omitted, the tool is assumed to be on $PATH"
                 },
                 "command": {
-                    "$ref": "/command/v1.0.0/schema.json#/resources/command:remote:Command",
+                    "$ref": "/command/v1.0.2/schema.json#/resources/command:remote:Command",
                     "description": "The underlying command"
                 },
                 "connection": {
-                    "$ref": "/command/v1.0.0/schema.json#/types/command:remote:Connection",
+                    "$ref": "/command/v1.0.2/schema.json#/types/command:remote:Connection",
                     "description": "Connection details for the remote system"
                 },
                 "create": {
@@ -2652,7 +2652,7 @@
                     "description": "Path to the binary on the remote system. If omitted, the tool is assumed to be on $PATH"
                 },
                 "connection": {
-                    "$ref": "/command/v1.0.0/schema.json#/types/command:remote:Connection",
+                    "$ref": "/command/v1.0.2/schema.json#/types/command:remote:Connection",
                     "description": "Connection details for the remote system"
                 },
                 "create": {
@@ -2726,11 +2726,11 @@
                     "description": "Path to the binary on the remote system. If omitted, the tool is assumed to be on $PATH"
                 },
                 "command": {
-                    "$ref": "/command/v1.0.0/schema.json#/resources/command:remote:Command",
+                    "$ref": "/command/v1.0.2/schema.json#/resources/command:remote:Command",
                     "description": "The underlying command"
                 },
                 "connection": {
-                    "$ref": "/command/v1.0.0/schema.json#/types/command:remote:Connection",
+                    "$ref": "/command/v1.0.2/schema.json#/types/command:remote:Connection",
                     "description": "Connection details for the remote system"
                 },
                 "create": {
@@ -2814,7 +2814,7 @@
                     "description": "Path to the binary on the remote system. If omitted, the tool is assumed to be on $PATH"
                 },
                 "connection": {
-                    "$ref": "/command/v1.0.0/schema.json#/types/command:remote:Connection",
+                    "$ref": "/command/v1.0.2/schema.json#/types/command:remote:Connection",
                     "description": "Connection details for the remote system"
                 },
                 "create": {
@@ -2888,11 +2888,11 @@
                     "description": "Path to the binary on the remote system. If omitted, the tool is assumed to be on $PATH"
                 },
                 "command": {
-                    "$ref": "/command/v1.0.0/schema.json#/resources/command:remote:Command",
+                    "$ref": "/command/v1.0.2/schema.json#/resources/command:remote:Command",
                     "description": "The underlying command"
                 },
                 "connection": {
-                    "$ref": "/command/v1.0.0/schema.json#/types/command:remote:Connection",
+                    "$ref": "/command/v1.0.2/schema.json#/types/command:remote:Connection",
                     "description": "Connection details for the remote system"
                 },
                 "create": {
@@ -2976,7 +2976,7 @@
                     "description": "Path to the binary on the remote system. If omitted, the tool is assumed to be on $PATH"
                 },
                 "connection": {
-                    "$ref": "/command/v1.0.0/schema.json#/types/command:remote:Connection",
+                    "$ref": "/command/v1.0.2/schema.json#/types/command:remote:Connection",
                     "description": "Connection details for the remote system"
                 },
                 "create": {
@@ -3050,11 +3050,11 @@
                     "description": "Path to the binary on the remote system. If omitted, the tool is assumed to be on $PATH"
                 },
                 "command": {
-                    "$ref": "/command/v1.0.0/schema.json#/resources/command:remote:Command",
+                    "$ref": "/command/v1.0.2/schema.json#/resources/command:remote:Command",
                     "description": "The underlying command"
                 },
                 "connection": {
-                    "$ref": "/command/v1.0.0/schema.json#/types/command:remote:Connection",
+                    "$ref": "/command/v1.0.2/schema.json#/types/command:remote:Connection",
                     "description": "Connection details for the remote system"
                 },
                 "create": {
@@ -3138,7 +3138,7 @@
                     "description": "Path to the binary on the remote system. If omitted, the tool is assumed to be on $PATH"
                 },
                 "connection": {
-                    "$ref": "/command/v1.0.0/schema.json#/types/command:remote:Connection",
+                    "$ref": "/command/v1.0.2/schema.json#/types/command:remote:Connection",
                     "description": "Connection details for the remote system"
                 },
                 "create": {
